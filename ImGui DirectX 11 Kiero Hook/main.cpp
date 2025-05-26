@@ -66,7 +66,7 @@ bool SetupConsole()
 
 // ESSENCIAIS PARA HOOKS E ESTRUTURAS 
 
-static void* LocalPlayer = nullptr;
+void* LocalPlayer = nullptr;
 std::vector <void*> Players;
 
 // Recoil
@@ -75,7 +75,7 @@ float RecoilMM[2] = { 0.f,85.f };
 
 
 
-// HOOKS DE FUN«’ES 
+// HOOKS DE FUN√á√ïES 
 
 
 // Fov
@@ -148,7 +148,7 @@ void PlayerScript__Update(void* __this)
 }
 
 
-// OnDestroy -> Remover Jogadores da lista quando forem destruÌdos para evitar nullptr
+// OnDestroy -> Remover Jogadores da lista quando forem destru√≠dos para evitar nullptr
 void (*OnDestroy_Original)(void*) = nullptr;
 void OnDestroy(void* __this)
 {

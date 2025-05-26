@@ -1,3 +1,5 @@
+![Image](https://github.com/KidosheAmikuranyakish/Simple-Internal-Kubom-Cheat/blob/main/Screenshots/h.png)
+
 # Kubom Cheat - A Simple Internal Cheat
 *Features*
  - **AIM**

@@ -9,6 +9,7 @@
 - **ESP (VISUAL MENU)**
 	- LINES
 	- BOXES
+	- DISTANCE
 	- ( You Can Add More Visual Features Easily following the drawing section )
 
 ## Credits

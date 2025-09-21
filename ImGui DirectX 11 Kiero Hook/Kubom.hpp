@@ -24,16 +24,12 @@ float GetDistanceCoordsBetween(float x1, float y1, float x2, float y2)
 
 
 namespace Il2cpp {
-
-
-
 	typedef void* (__fastcall* get_domain_T)();
 	get_domain_T get_domain = reinterpret_cast<get_domain_T>((uintptr_t)(GetProcAddress(GetModuleHandleA("GameAssembly.dll"), "il2cpp_domain_get")));
 
 	typedef const char* (__fastcall* il2cpp_string_newT)(void* domain, const char* text);
 	il2cpp_string_newT il2cpp_string_new = reinterpret_cast<il2cpp_string_newT>(((uintptr_t)GetProcAddress(GetModuleHandleA("GameAssembly.dll"), "il2cpp_string_new")));
 }
-
 
 
 
@@ -112,40 +108,6 @@ struct UnityString {
 };
 
 
-
-
-
-/*
-// Game Structs 
-struct UnityEngine_Vector3_Fields {
-    float x;
-    float y;
-    float z;
-};
-
-//@brief Unity Vector 3
-struct UnityEngine_Vector3_o {
-    float x;
-    float y;
-    float z;
-	UnityEngine_Vector3_o operator - (const UnityEngine_Vector3_o& other)
-	{
-		x - other.x;
-		y - other.y;
-		z - other.z;
-	}
-};
-*/
-/*
-struct UnityEngine_Matrix4x4_Fields {
-    float Matrix[16];
-};
-
-//@brief Unity Matrix 4x4
-struct UnityEngine_Matrix4x4_o {
-    UnityEngine_Matrix4x4_Fields fields;
-};*/
-
 //@brief Vector 4
 struct Vector4 {
     float x, y, z, w;
@@ -169,26 +131,6 @@ typedef struct Vector2_d {
 
 
 
-/*
-struct kube_cheat_ObscuredIntAB_Fields {
-    int32_t hvh;
-    int32_t hvl;
-    int32_t fakeValue;
-};
-*/
-/*@bried Obcured Val
-struct kube_cheat_ObscuredIntAB_o {
-    kube_cheat_ObscuredIntAB_Fields fields;
-};
-
-
-/*@brief quaternion
-struct UnityEngine_Quaternion_o {
-	float x;
-	float y;
-	float z;
-	float w;
-};
 
 /////////////
 //         //
@@ -198,7 +140,7 @@ struct UnityEngine_Quaternion_o {
 
 
 /*
-*@brief Obtém a camera da UnityGetCameraMain
+*@brief ObtÃ©m a camera da UnityGetCameraMain
 */
 void* getCamera()
 {
@@ -206,7 +148,7 @@ void* getCamera()
 }
 
 /*
-*@brief Retorna um "UnityEngine_Vector3_o" com as posições do Jogador.
+*@brief Retorna um "UnityEngine_Vector3_o" com as posiÃ§Ãµes do Jogador.
 */
 UnityEngine_Vector3_o WorldToScreenUnity(void* camera, UnityEngine_Vector3_o Position)
 {
@@ -229,7 +171,7 @@ void* GetTransform(void* object)
 }
 
 /*
-* @brief Obtem a posição da Transform
+* @brief Obtem a posiÃ§Ã£o da Transform
 */
 UnityEngine_Vector3_o GetTransformPosition(void* transform)
 {
@@ -274,27 +216,4 @@ UnityEngine_Quaternion_o Quaternion_LookRotation_Unity(UnityEngine_Vector3_o for
 UnityEngine_Vector3_o Vector3Slerp(UnityEngine_Vector3_o a, UnityEngine_Vector3_o b, float t)
 {
 	return (((UnityEngine_Vector3_o(*)(UnityEngine_Vector3_o, UnityEngine_Vector3_o, float))((uintptr_t)GetModuleHandleA("GameAssembly.dll") + 0xF45F20))(a, b, t));
-}
-
-
-
-bool WorldToScreen(UnityEngine_Vector3_o pos, Screen_t& screen, float matrix[16], int windowWidth, int windowHeight)
-{
-    Vector4 clipCoords;
-    clipCoords.x = pos.fields.x * matrix[0] + pos.fields.y * matrix[4] + pos.fields.z * matrix[8] + matrix[12];
-    clipCoords.y = pos.fields.x * matrix[1] + pos.fields.y * matrix[5] + pos.fields.z * matrix[9] + matrix[13];
-    clipCoords.z = pos.fields.x * matrix[2] + pos.fields.y * matrix[6] + pos.fields.z * matrix[10] + matrix[14];
-    clipCoords.w = pos.fields.x * matrix[3] + pos.fields.y * matrix[7] + pos.fields.z * matrix[11] + matrix[15];
-
-    if (clipCoords.w < 0.1f)
-        return false;
-
-    Vector3 NDC;
-    NDC.x = clipCoords.x / clipCoords.w;
-    NDC.y = clipCoords.y / clipCoords.w;
-    NDC.z = clipCoords.z / clipCoords.w;
-
-    screen.x = (windowWidth / 2 * NDC.x) + (NDC.x + windowWidth / 2);
-    screen.y = -(windowHeight / 2 * NDC.y) + (NDC.y + windowHeight / 2);
-    return true;
 }
